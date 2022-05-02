@@ -3,8 +3,10 @@ from pytube.cli import on_progress
 import requests
 from bs4 import BeautifulSoup
 
+
 def baixaraudio(url):
     link = YouTube(url, on_progress_callback=on_progress)
+    print("\n Baixando o audio: ",getTitulo(url))
     link.streams.get_audio_only(subtype="mp4").download()
 
 def baixarvideo(url):
@@ -16,13 +18,14 @@ def Tags(url):
     r = link.keywords
     print(r)
 
-def getTITULO(url):
+def getTitulo(url):
     link = YouTube(url, on_progress_callback=on_progress)
-    r = link.title()
-    print(r)
+    r = link.title
+    return r
 
 
-l = ['']
+l = ['https://www.youtube.com/watch?v=nny6kuchJ7o']
 
 for i in l:
     baixaraudio(i)
+
